@@ -1,0 +1,16 @@
+{
+    "name": "senac/superanime",
+    "description": "Sites de downloads de mangas",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mlutegar",
+            "email": "mlutegar@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "dev-master"
+    }
+}
