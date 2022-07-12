@@ -3,7 +3,7 @@ use superanime;
 
 create or replace table manga(
     id int primary key auto_increment,
-    titulo varchar(250) not null unique,
+    titulo varchar(250) not null,
     anime varchar(250) not null,
     volume int not null,
     autor varchar(250) not null default "none",

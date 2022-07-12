@@ -88,7 +88,9 @@
         return $stmt->execute();
     }
 
-    function fnDeleteManga($id) {
+    function fnDeleteManga($id, $conteudo) {
+        unlink($conteudo);
+        
         $con = getConnection();
         $sql = "delete from manga where id = :pID";
         

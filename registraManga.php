@@ -12,14 +12,14 @@
 
     $capa = converterBase64($_FILES['capa']);
     $conteudo = $_FILES['conteudo']['tmp_name'];
-    $conteudo_name = $_FILES['conteudo']['name'];
+    $conteudo_name = "{$titulo}.zip";
 
     $dirAbs = "C:/xampp/htdocs/projeto/Senac/PHP/superanime/upload/";
     $dirRel = "upload/";
     $pathAbs = $dirAbs.$conteudo_name;
     $pathRel = $dirRel.$conteudo_name;
 
-    move_uploaded_file( $conteudo, $pathAbs);    
+    move_uploaded_file($conteudo, $pathAbs);    
 
     if(empty($autor)) {
         $autor = "Desconhecido";

@@ -50,7 +50,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>a
+    </div>
 
     <?php if(isset($notificacao)) : ?>
         <tfoot>

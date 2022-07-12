@@ -1,5 +1,5 @@
 <?php 
-    include('configAdmin.php');
+    include('config.php');
     require_once('repository/MangaRepository.php');
     $notificacao = filter_input(INPUT_GET, 'notify', FILTER_SANITIZE_SPECIAL_CHARS);
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -23,7 +23,7 @@
             </div>
 
             <div class="div2 detail_info" style="text-align: left;">
-                <p><strong>Nome do Manga:</strong>   <?= $manga->titulo ?></p><br><hr><br>
+                <p><strong>Nome do Manga:</strong><?= $manga->titulo ?></p><br><hr><br>
                 <p><strong>Anime:</strong> <?= $manga->anime ?></p><br><hr><br>
                 <p><strong>Volume:</strong> <?= $manga->volume ?></p><br><hr><br>
                 <p><strong>Autor:</strong> <?= $manga->autor ?></p><br><hr><br>
