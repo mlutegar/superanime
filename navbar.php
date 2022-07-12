@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/navbar.css">
 
 <header>
     <img class="logo" src="img/logo.png">
