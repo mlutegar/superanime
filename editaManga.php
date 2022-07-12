@@ -8,27 +8,29 @@
     $autor = filter_input(INPUT_POST, 'autor', FILTER_SANITIZE_SPECIAL_CHARS);
     $editora = filter_input(INPUT_POST, 'editora', FILTER_SANITIZE_SPECIAL_CHARS);
     $sumario = filter_input(INPUT_POST, 'sumario', FILTER_SANITIZE_SPECIAL_CHARS);
-
+    $conteudo = $_FILES['conteudo']['tmp_name'];
+    $conteudo_name = $_FILES['conteudo']['name'];
     $titulo = ("{$anime} - Vol.{$volume}");
-    $capa = converterBase64($_FILES['capa']);
-    $conteudo = converterBase64($_FILES['conteudo']);
 
-
-    $manga = fnLocalizaMangaPorId($id);
-
-    if(empty($_FILES['capa'])) {
-        $capa = $manga -> capa;
+    $capa = "";
+    if(!empty($_FILES['capa']['name'])){
+        $capa = converterBase64($_FILES['capa']);
     }
 
-    if(empty($_FILES['conteudo'])) {
-        $conteudo = $manga -> conteudo;
-    }
+    $dirAbs = "C:/xampp/htdocs/projeto/Senac/PHP/superanime/upload/";
+    $dirRel = "upload/";
+    $pathAbs = $dirAbs.$conteudo_name;
+    $pathRel = $dirRel.$conteudo_name;
+    
+    move_uploaded_file( $conteudo, $pathAbs);    
 
-    $msg = "";
-    if(fnUpdateManga($id, $titulo, $anime, $volume, $autor, $editora, $sumario, $capa, $conteudo)) {
+    $msg = "Falha ao editar";
+    if($conteudo == "" ){
+        fnUpdateMangaSemArquivo($id, $titulo, $anime, $volume, $autor, $editora, $sumario);
         $msg = "Sucesso ao editar";
     } else {
-        $msg = "Falha ao editar";
+        fnUpdateManga($id, $titulo, $anime, $volume, $autor, $editora, $sumario, $capa, $pathRel);
+        $msg = "Sucesso ao editar";
     }
 
     $_SESSION['id'] = $id;

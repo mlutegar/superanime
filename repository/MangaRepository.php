@@ -73,6 +73,21 @@
         return $stmt->execute();
     }
 
+    function fnUpdateMangaSemArquivo($id, $titulo, $anime, $volume, $autor, $editora, $sumario) {
+        $con = getConnection();
+        $sql = "update manga set titulo = :pTitulo, anime= :pAnime, volume = :pVolume, autor = :pAutor, editora= :pEditora, sumario = :pSumario where id = :pID";
+        
+        $stmt = $con->prepare($sql);
+        $stmt->bindParam(":pID", $id);
+        $stmt->bindParam(":pTitulo", $titulo);
+        $stmt->bindParam(":pAnime", $anime);
+        $stmt->bindParam(":pVolume", $volume);
+        $stmt->bindParam(":pAutor", $autor);
+        $stmt->bindParam(":pEditora", $editora);
+        $stmt->bindParam(":pSumario", $sumario);
+        return $stmt->execute();
+    }
+
     function fnDeleteManga($id) {
         $con = getConnection();
         $sql = "delete from manga where id = :pID";

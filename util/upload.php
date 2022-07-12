@@ -10,7 +10,7 @@
                 echo 'arquivo excedeu o tamanho limite';
                 exit;
             case UPLOAD_ERR_NO_FILE:
-                echo 'arquivo não enviado';
+                echo 'arquivo não enviado (upload)';
                 exit;
             default: 
                 echo 'erro desconhecido';

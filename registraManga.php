@@ -14,12 +14,12 @@
     $conteudo = $_FILES['conteudo']['tmp_name'];
     $conteudo_name = $_FILES['conteudo']['name'];
 
-    $dir = "C:/xampp/htdocs/projeto/Senac/PHP/superanime/upload/";
-    $path = $dir.$conteudo_name;
-    move_uploaded_file( $conteudo, $path );    
+    $dirAbs = "C:/xampp/htdocs/projeto/Senac/PHP/superanime/upload/";
+    $dirRel = "upload/";
+    $pathAbs = $dirAbs.$conteudo_name;
+    $pathRel = $dirRel.$conteudo_name;
 
-    $dir = "upload/";
-    $path = $dir.$conteudo_name;
+    move_uploaded_file( $conteudo, $pathAbs);    
 
     if(empty($autor)) {
         $autor = "Desconhecido";
@@ -31,10 +31,10 @@
         $sumario = "Sem sumario";
     }
 
-    if(empty($capa) || empty($path) || empty($anime) || empty($volume)) {
+    if(empty($capa) || empty($pathRel) || empty($anime) || empty($volume)) {
         $msg = "Preencher todos os campos primeiro.";
     } else {
-        if(fnAddManga($titulo, $anime, $volume, $autor, $editora, $sumario, $capa, $path)) {
+        if(fnAddManga($titulo, $anime, $volume, $autor, $editora, $sumario, $capa, $pathRel)) {
             $msg = "Sucesso ao adicionar o Manga no site";
         } else {
             $msg = "Falha ao adicionar o Manga no site";

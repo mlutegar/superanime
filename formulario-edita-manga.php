@@ -66,7 +66,7 @@
     
               <div class="form_group">
                 <label>Sumario</label>
-                <textarea name="sumario" class="form_field" rows="8" value="<?= $manga->sumario ?>" id="sumarioId"></textarea>
+                <input name="sumario" class="form_field" rows="8" value="<?= $manga->sumario ?>" id="sumarioId">
               </div>
 
               <div class="btt">
